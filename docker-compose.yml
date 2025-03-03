@@ -24,15 +24,28 @@ services:
       - nats
     environment:
       DATABASE_URL: "postgresql://admin:admin@postgres:5432/microservicios_db?schema=public"
-      NATS_URL: "nats://nats:4222"
+      NATS_URL: "nats://nats_server:4222"  # Cambiado de localhost a nats_server
+
+  servicio-pedidos:
+    build: ./servicio-pedidos
+    container_name: servicio_pedidos
+    restart: always
+    ports:
+      - "4000:4000"
+    depends_on:
+      - postgres
+      - nats
+    environment:
+      DATABASE_URL: "postgresql://admin:admin@postgres:5432/microservicio_pedidosdb?schema=public"
+      NATS_URL: "nats://nats_server:4222"  # Cambiado de localhost a nats_server
 
   nats:
     image: nats:latest
     container_name: nats_server
     restart: always
     ports:
-      - "4222:4222" # Puerto de conexión
-      - "8222:8222" # Monitor de NATS
+      - "4222:4222"  # Puerto de conexión
+      - "8222:8222"  # Monitor de NATS
 
 volumes:
   postgres_data:
