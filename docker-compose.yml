@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_db
+    restart: always
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: microservicios_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  servicio-usuarios:
+    build: ./servicio-usuarios
+    container_name: servicio_usuarios
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+      - nats
+    environment:
+      DATABASE_URL: "postgresql://admin:admin@postgres:5432/microservicios_db?schema=public"
+      NATS_URL: "nats://nats:4222"
+
+  nats:
+    image: nats:latest
+    container_name: nats_server
+    restart: always
+    ports:
+      - "4222:4222" # Puerto de conexión
+      - "8222:8222" # Monitor de NATS
+
+volumes:
+  postgres_data:
