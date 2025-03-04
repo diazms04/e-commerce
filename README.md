@@ -36,7 +36,7 @@ npm install
 
 # Para el servicio de pedidos
 ```
-cd ../servicio-pedidos
+cd servicio-pedidos
 npm install
 ```
 
