@@ -70,76 +70,76 @@ Esto construirá y levantará los contenedores para los servicios y la base de d
 ### Microservicio de Autenticación
 
 - **Iniciar Sesión (Obtener Token)**
-- **Método:** `POST`
-- **URL:** `/auth/login`
-- **Cuerpo de la Solicitud:**
- ```json
- {
-   "email": "juan.perez@example.com",
-   "password": "contraseñaSegura123"
- }
- ```
-- **Respuesta de Ejemplo:**
- ```json
- {
-   "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
- }
- ```
-- **Descripción:** Este endpoint permite a los usuarios autenticarse proporcionando su correo electrónico y contraseña. Si las credenciales son válidas, se devuelve un token JWT que debe incluirse en el encabezado `Authorization` de las solicitudes subsiguientes para acceder a rutas protegidas.
+  - **Método:** `POST`
+  - **URL:** `http://localhost:3000/auth/login`
+  - **Cuerpo de la Solicitud:**
+    ```json
+    {
+      "email": "juan.perez@example.com",
+      "password": "contraseñaSegura123"
+    }
+    ```
+  - **Respuesta de Ejemplo:**
+    ```json
+    {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+    }
+    ```
+  - **Descripción:** Este endpoint permite a los usuarios autenticarse proporcionando su correo electrónico y contraseña. Si las credenciales son válidas, se devuelve un token JWT que debe incluirse en el encabezado `Authorization` de las solicitudes subsiguientes para acceder a rutas protegidas.
 
 ### Microservicio de Usuarios
 
 - **Registrar Usuario**
-- **Método:** `POST`
-- **URL:** `/usuarios/registro`
-- **Cuerpo de la Solicitud:**
- ```json
- {
-   "nombre": "Juan Pérez",
-   "email": "juan.perez@example.com",
-   "password": "contraseñaSegura123"
- }
- ```
-- **Descripción:** Este endpoint permite registrar un nuevo usuario en el sistema.
+  - **Método:** `POST`
+  - **URL:** `http://localhost:3000/usuarios/registro`
+  - **Cuerpo de la Solicitud:**
+    ```json
+    {
+      "nombre": "Juan Pérez",
+      "email": "juan.perez@example.com",
+      "password": "contraseñaSegura123"
+    }
+    ```
+  - **Descripción:** Este endpoint permite registrar un nuevo usuario en el sistema.
 
 - **Obtener Perfil del Usuario**
-- **Método:** `GET`
-- **URL:** `/usuarios/perfil`
-- **Encabezado:**
- ```
- Authorization: Bearer <tu_token_jwt>
- ```
-- **Descripción:** Este endpoint permite obtener la información del perfil del usuario autenticado. Requiere un token JWT válido en el encabezado `Authorization`.
+  - **Método:** `GET`
+  - **URL:** `http://localhost:3000/usuarios/perfil`
+  - **Encabezado:**
+    ```
+    Authorization: Bearer <tu_token_jwt>
+    ```
+  - **Descripción:** Este endpoint permite obtener la información del perfil del usuario autenticado. Requiere un token JWT válido en el encabezado `Authorization`.
 
 ### Microservicio de Pedidos
 
 - **Crear Pedido**
-- **Método:** `POST`
-- **URL:** `/pedidos`
-- **Cuerpo de la Solicitud:**
- ```json
- {
-   "descripcion": "Pedido de 10 unidades del producto X",
-   "usuarioId": "uuid-del-usuario"
- }
- ```
-- **Descripción:** Este endpoint permite crear un nuevo pedido para un usuario específico.
+  - **Método:** `POST`
+  - **URL:** `http://localhost:4000/pedidos`
+  - **Cuerpo de la Solicitud:**
+    ```json
+    {
+      "descripcion": "Pedido de 10 unidades del producto X",
+      "usuarioId": "uuid-del-usuario"
+    }
+    ```
+  - **Descripción:** Este endpoint permite crear un nuevo pedido para un usuario específico.
 
 - **Listar Pedidos por Usuario**
-- **Método:** `GET`
-- **URL:** `/pedidos/usuario/{usuarioId}`
-- **Descripción:** Este endpoint permite listar todos los pedidos asociados a un usuario específico.
+  - **Método:** `GET`
+  - **URL:** `http://localhost:4000/pedidos/usuario/{usuarioId}`
+  - **Descripción:** Este endpoint permite listar todos los pedidos asociados a un usuario específico.
 
 - **Cambiar Estado de Pedido**
-- **Método:** `PUT`
-- **URL:** `/pedidos/{id}/estado`
-- **Cuerpo de la Solicitud:**
- ```json
- {
-   "estado": "EN_PROCESO" //  PENDIENTE   EN_PROCESO    COMPLETADO
- }
- ```
-- **Descripción:** Este endpoint permite cambiar el estado de un pedido específico. Requiere un token JWT válido en el encabezado `Authorization`.
+  - **Método:** `PUT`
+  - **URL:** `http://localhost:4000/pedidos/{id}/estado`
+  - **Cuerpo de la Solicitud:**
+    ```json
+    {
+      "estado": "EN_PROCESO" //  PENDIENTE   EN_PROCESO    COMPLETADO
+    }
+    ```
+  - **Descripción:** Este endpoint permite cambiar el estado de un pedido específico. Requiere un token JWT válido en el encabezado `Authorization`.
 
 *Nota: Reemplaza `{usuarioId}` y `{id}` con los valores correspondientes.*
 
