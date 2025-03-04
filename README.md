@@ -103,7 +103,7 @@ npx prisma generate
   - **URL:** `http://localhost:3000/usuarios/perfil`
   - **Encabezado:**
     ```
-    Authorization: Bearer <tu_token_jwt>
+    Authorization: Bearer <token_jwt>
     ```
   - **Descripción:** Este endpoint permite obtener la información del perfil del usuario autenticado. Requiere un token JWT válido en el encabezado `Authorization`.
  
