@@ -63,7 +63,22 @@ docker-compose up --build
 ```
 Esto construirá y levantará los contenedores para los servicios y la base de datos.
 
+## Paso 4: Ejecutar las Migraciones de Prisma
 
+Asegúrate de que las bases de datos estén en funcionamiento antes de ejecutar estos comandos. Para aplicar las migraciones y generar el cliente Prisma, sigue estos pasos:
+
+1. **Ejecuta las migraciones de Prisma** para asegurarte de que las tablas y esquemas estén correctamente creados en la base de datos:
+
+   En cada microservicio (`servicio-usuarios` y `servicio-pedidos`), ejecuta el siguiente comando:
+   
+   ```npx prisma migrate reset```
+Este comando borrará las tablas actuales (si existen) y las recreará según las migraciones definidas en tu esquema de Prisma.
+
+Genera el cliente Prisma para que el código pueda interactuar con la base de datos:
+
+```
+npx prisma generate
+```
 
 ## Endpoints
 
