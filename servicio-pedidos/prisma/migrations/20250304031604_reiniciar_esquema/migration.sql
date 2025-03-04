@@ -6,7 +6,7 @@ CREATE TABLE "Pedido" (
     "id" SERIAL NOT NULL,
     "descripcion" TEXT NOT NULL,
     "estado" "Estado" NOT NULL,
-    "usuarioId" INTEGER NOT NULL,
+    "usuarioId" TEXT NOT NULL,
 
     CONSTRAINT "Pedido_pkey" PRIMARY KEY ("id")
 );
