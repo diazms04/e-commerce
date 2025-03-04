@@ -1,15 +1,36 @@
-import { Injectable, Inject } from '@nestjs/common';
-import { ClientProxy } from '@nestjs/microservices';
-import { Observable } from 'rxjs';
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from '../prisma/prisma.service';
+import { Pedido, Estado } from '@prisma/client';
 
 @Injectable()
 export class PedidosService {
-  constructor(
-    @Inject('PEDIDOS_SERVICE') private readonly client: ClientProxy, // Aquí está el Inject
-  ) {}
+  constructor(private prisma: PrismaService) {}
 
-  // Método para emitir un evento de NATS si es necesario
-  emitirEventoDePedido(pedidoData: any): Observable<any> {
-    return this.client.emit('pedido_creado', pedidoData);
+  // Crear un pedido
+  async crearPedido(descripcion: string, usuarioId: string): Promise<Pedido> {
+    return await this.prisma.pedido.create({
+      data: {
+        descripcion,
+        estado: Estado.PENDIENTE,  // Establecer un estado por defecto
+        usuarioId,
+      },
+    });
+  }
+
+  // Listar los pedidos de un usuario
+  async listarPedidos(usuarioId: string): Promise<Pedido[]> {
+    return await this.prisma.pedido.findMany({
+      where: {
+        usuarioId,
+      },
+    });
+  }
+
+  // Cambiar el estado de un pedido
+  async cambiarEstado(id: number, nuevoEstado: Estado): Promise<Pedido> {
+    return await this.prisma.pedido.update({
+      where: { id },
+      data: { estado: nuevoEstado },
+    });
   }
 }

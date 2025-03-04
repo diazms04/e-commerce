@@ -36,7 +36,7 @@ services:
       - postgres
       - nats
     environment:
-      DATABASE_URL: "postgresql://admin:admin@postgres:5432/microservicio_pedidosdb?schema=public"
+      DATABASE_URL: "postgresql://admin:admin@postgres:5432/microservicios_pedidos_db?schema=public"
       NATS_URL: "nats://nats_server:4222"  # Cambiado de localhost a nats_server
 
   nats:
