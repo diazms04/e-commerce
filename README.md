@@ -79,7 +79,10 @@ Genera el cliente Prisma para que el código pueda interactuar con la base de da
 ```
 npx prisma generate
 ```
-
+Luego de esto vuelva a correr el contendor:
+```
+docker-compose up --build
+```
 ## Endpoints
 
 
