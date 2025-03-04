@@ -63,7 +63,7 @@ docker-compose up --build
 ```
 Esto construirá y levantará los contenedores para los servicios y la base de datos.
 
-## Paso 4: Ejecutar las Migraciones de Prisma (Solo si ocurre algun error en la creación de las tablas)
+# Paso 4: Ejecutar las Migraciones de Prisma 
 
 Asegúrate de que las bases de datos estén en funcionamiento antes de ejecutar estos comandos. Para aplicar las migraciones y generar el cliente Prisma, sigue estos pasos:
 
