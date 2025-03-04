@@ -18,14 +18,14 @@ Además, se incluye un archivo `docker-compose.yml`.
 - **Node.js** (>= 14.x.x)
 - **Docker** y **Docker Compose** (opcional)
 
-Paso 1: Clonar el Repositorio
+# Paso 1: Clonar el Repositorio
 
 ```
 git clone https://github.com/diazms04/e-commerce.git
 cd e-commerce
 ```
 
-Paso 2: Instalar Dependencias
+# Paso 2: Instalar Dependencias
 Instala las dependencias en ambos microservicios:
 
 # Para el servicio de usuarios
@@ -40,7 +40,7 @@ cd servicio-pedidos
 npm install
 ```
 
-Paso 3: Configurar las Variables de Entorno
+# Paso 3: Configurar las Variables de Entorno
 Es esencial configurar las variables de entorno para que cada microservicio se conecte correctamente a su base de datos respectiva. Para ello, sigue estos pasos en cada microservicio:
 
 Crear el archivo .env: En la raíz de cada microservicio (servicio-usuarios y servicio-pedidos), crea un archivo llamado .env.
