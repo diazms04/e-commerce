@@ -4,14 +4,14 @@ import { connect, NatsConnection, StringCodec } from 'nats';
 @Injectable()
 export class NatsService implements OnModuleInit, OnModuleDestroy {
   private nc: NatsConnection;
-  private sc = StringCodec(); // Crear una instancia de StringCodec directamente
+  private sc = StringCodec(); 
 
   async onModuleInit() {
     const NATS_URL = process.env.NATS_URL || 'nats://localhost:4222';
     this.nc = await connect({ servers: NATS_URL });
     console.log('Conectado a NATS:', NATS_URL);
 
-    // Suscribirse a un canal
+
     this.nc.subscribe('test', {
       callback: (err, msg) => {
         if (err) {
@@ -23,7 +23,7 @@ export class NatsService implements OnModuleInit, OnModuleDestroy {
     });
   }
 
-  // Método para publicar un mensaje en NATS
+
   async publishMessage(subject: string, message: string) {
     if (this.nc) {
       const encodedMessage = this.sc.encode(message);

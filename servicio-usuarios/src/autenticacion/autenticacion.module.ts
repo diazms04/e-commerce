@@ -11,7 +11,7 @@ import { JwtStrategy } from './jwt.strategy';
     UsuariosModule,
     PassportModule,
     JwtModule.register({
-      secret: 'secreto_super_seguro', // Usa variables de entorno en producción
+      secret: 'secreto_super_seguro',
       signOptions: { expiresIn: '1h' },
     }),
   ],

@@ -13,7 +13,7 @@ export class NatsController {
 
   @Get('listen')
   listenToMessages() {
-    // Este método ya estará escuchando mensajes por NATS
+
     return 'Escuchando mensajes...';
   }
 }
