@@ -40,7 +40,7 @@ cd ../servicio-pedidos
 npm install
 ```
 
-Paso 3: Configurar las Variables de Entorno
+##Paso 3: Configurar las Variables de Entorno
 Es esencial configurar las variables de entorno para que cada microservicio se conecte correctamente a su base de datos respectiva. Para ello, sigue estos pasos en cada microservicio:
 
 Crear el archivo .env: En la raíz de cada microservicio (servicio-usuarios y servicio-pedidos), crea un archivo llamado .env.
