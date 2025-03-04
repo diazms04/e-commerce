@@ -67,25 +67,6 @@ Esto construirá y levantará los contenedores para los servicios y la base de d
 
 ## Endpoints
 
-### Microservicio de Autenticación
-
-- **Iniciar Sesión (Obtener Token)**
-  - **Método:** `POST`
-  - **URL:** `http://localhost:3000/auth/login`
-  - **Cuerpo de la Solicitud:**
-    ```json
-    {
-      "email": "juan.perez@example.com",
-      "password": "contraseñaSegura123"
-    }
-    ```
-  - **Respuesta de Ejemplo:**
-    ```json
-    {
-      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
-    }
-    ```
-  - **Descripción:** Este endpoint permite a los usuarios autenticarse proporcionando su correo electrónico y contraseña. Si las credenciales son válidas, se devuelve un token JWT que debe incluirse en el encabezado `Authorization` de las solicitudes subsiguientes para acceder a rutas protegidas.
 
 ### Microservicio de Usuarios
 
@@ -110,6 +91,27 @@ Esto construirá y levantará los contenedores para los servicios y la base de d
     Authorization: Bearer <tu_token_jwt>
     ```
   - **Descripción:** Este endpoint permite obtener la información del perfil del usuario autenticado. Requiere un token JWT válido en el encabezado `Authorization`.
+ 
+
+### Microservicio de Autenticación
+
+- **Iniciar Sesión (Obtener Token)**
+  - **Método:** `POST`
+  - **URL:** `http://localhost:3000/auth/login`
+  - **Cuerpo de la Solicitud:**
+    ```json
+    {
+      "email": "juan.perez@example.com",
+      "password": "contraseñaSegura123"
+    }
+    ```
+  - **Respuesta de Ejemplo:**
+    ```json
+    {
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+    }
+    ```
+  - **Descripción:** Este endpoint permite a los usuarios autenticarse proporcionando su correo electrónico y contraseña. Si las credenciales son válidas, se devuelve un token JWT que debe incluirse en el encabezado `Authorization` de las solicitudes subsiguientes para acceder a rutas protegidas.
 
 ### Microservicio de Pedidos
 
