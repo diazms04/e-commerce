@@ -10,8 +10,11 @@ COPY package.json package-lock.json ./
 # Instala las dependencias
 RUN npm install
 
-# Copia el resto del código
+# Copia el resto del código, incluyendo el archivo .env si es necesario
 COPY . .
+
+# Genera los binarios de Prisma dentro del contenedor
+RUN npx prisma generate
 
 # Expone el puerto en el que corre NestJS
 EXPOSE 3000

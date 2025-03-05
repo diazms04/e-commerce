@@ -7,11 +7,14 @@ WORKDIR /app
 # Copia los archivos de configuración primero para aprovechar la caché de Docker
 COPY package.json package-lock.json ./
 
-# Instala las dependencias
-RUN npm install
+# Instala las dependencias (solo de producción)
+RUN npm ci --only=production
 
-# Copia el resto del código
+# Copia el resto del código al contenedor
 COPY . .
+
+# Si usas Prisma, genera los binarios dentro del contenedor
+RUN npx prisma generate
 
 # Expone el puerto en el que corre NestJS
 EXPOSE 4000
