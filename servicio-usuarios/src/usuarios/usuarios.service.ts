@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, ConflictException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 const bcrypt = require('bcryptjs');
 
@@ -9,6 +9,15 @@ export class UsuariosService {
   async crearUsuario(nombre: string, email: string, password: string) {
     if (!password) {
       throw new Error('La contraseña es requerida');
+    }
+
+    // Verificar si el email ya existe
+    const usuarioExistente = await this.prisma.usuario.findUnique({
+      where: { email },
+    });
+
+    if (usuarioExistente) {
+      throw new ConflictException('El email ya está en uso');
     }
 
     const hash = await bcrypt.hash(password, 10);

@@ -10,7 +10,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
         name: 'PEDIDOS_SERVICE',
         transport: Transport.NATS,
         options: {
-          url: 'nats://localhost:4222', // Dirección de tu servidor NATS
+          url: 'nats://localhost:4222', // Direccion servidor NATS
         },
       },
     ]),
